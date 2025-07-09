@@ -1,0 +1,290 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  color: #333;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* App container */
+.app {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header */
+.app-header {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.app-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.app-header p {
+  font-size: 1.1rem;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Main content */
+.app-main {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* Controls */
+.controls {
+  display: flex;
+  gap: 1rem;
+}
+
+.discover-btn {
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.discover-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.discover-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Error message */
+.error {
+  background: #fee;
+  color: #c33;
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid #fcc;
+  max-width: 500px;
+  text-align: center;
+}
+
+/* Dog card */
+.dog-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  max-width: 600px;
+  width: 100%;
+}
+
+.dog-image {
+  margin-bottom: 1.5rem;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.dog-image img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  display: block;
+}
+
+.dog-info h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #333;
+  text-align: center;
+}
+
+.attributes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.attribute {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  background: rgba(102, 126, 234, 0.1);
+  border: 1px solid rgba(102, 126, 234, 0.2);
+  transition: all 0.3s ease;
+}
+
+.attribute.clickable {
+  cursor: pointer;
+  position: relative;
+}
+
+.attribute.clickable:hover {
+  background: rgba(102, 126, 234, 0.2);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 10px rgba(102, 126, 234, 0.2);
+}
+
+.attribute.clickable::after {
+  content: "👆 Click to ban";
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.8rem;
+  color: #666;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.attribute.clickable:hover::after {
+  opacity: 1;
+}
+
+.attribute-label {
+  font-weight: 600;
+  color: #555;
+}
+
+.attribute-value {
+  font-weight: 500;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+/* Ban list */
+.ban-list {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+}
+
+.ban-list h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #e74c3c;
+}
+
+.ban-list p {
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.ban-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.ban-item {
+  background: linear-gradient(45deg, #e74c3c, #c0392b);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(231, 76, 60, 0.3);
+}
+
+.ban-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+}
+
+.ban-hint {
+  font-size: 0.9rem;
+  color: #888;
+  font-style: italic;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .app-header {
+    padding: 1.5rem;
+  }
+
+  .app-header h1 {
+    font-size: 2rem;
+  }
+
+  .app-main {
+    padding: 1rem;
+  }
+
+  .dog-card {
+    padding: 1.5rem;
+  }
+
+  .dog-image img {
+    height: 300px;
+  }
+
+  .discover-btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .attribute {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+
+  .attribute.clickable::after {
+    position: static;
+    transform: none;
+    margin-top: 0.5rem;
+  }
+
+  .ban-items {
+    flex-direction: column;
+    align-items: center;
+  }
+}
